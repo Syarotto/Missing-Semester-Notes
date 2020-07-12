@@ -18,3 +18,5 @@ YouTube channel: [Missing Semester](https://www.youtube.com/channel/UCuXy5tCgEni
 | 1/28 |Security and Cryptography|      |           |
 | 1/29 |Potpourri|      |           |
 | 1/30 |Q&A|      |           |
+
+*\* Platform: Windows Subsystem for Linux (WSL) on Windows 10 + Ubuntu 18.04 LTS*
