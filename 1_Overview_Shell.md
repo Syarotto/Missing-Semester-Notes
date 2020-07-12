@@ -235,6 +235,7 @@ ls -l
 ./semester
 ```
 Because the first line in the file `#!/bin/sh` specified the interpreter program. 
+
 *Reference: [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))*
 - Use `|` and `>` to write the "last modified" date output by `semester` into a file called `last-modified.txt` in your home directory.
 ```
