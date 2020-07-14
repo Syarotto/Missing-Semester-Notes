@@ -1,7 +1,7 @@
 ## Lecture 1: Course Overview + The Shell
 Original note: [English Version](https://missing.csail.mit.edu/2020/course-shell/), [Chinese Version](https://missing-semester-cn.github.io/2020/course-shell/)
 
-Course video: [YouTube (Official)](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J), [Bilibili](https://www.bilibili.com/video/BV1x7411H7wa?p=1)
+Course video: [YouTube (Official)](https://youtu.be/Z56Jmr9Z34Q), [Bilibili](https://www.bilibili.com/video/BV1x7411H7wa?p=1)
 ### Date
 Presents the date and the time. 
 ```
