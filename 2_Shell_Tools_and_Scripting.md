@@ -239,4 +239,16 @@ cat example.sh | fzf
 ```
 If default bindings is chosen during installation, then now `Ctrl` + `R` will have a similar nicely formatted search window. It also supports fuzzy search, which means you don't have to type in regex like `find`. 
 #### Zsh
-To set up `zsh` on WSL, I followed this [link](https://blog.joaograssi.com/windows-subsystem-for-linux-with-oh-my-zsh-conemu/), which is very clear on every step. 
+To set up `zsh` on WSL, I followed this [blog](https://blog.joaograssi.com/windows-subsystem-for-linux-with-oh-my-zsh-conemu/). A Chinese instruction on [zhihu](https://zhuanlan.zhihu.com/p/62501175) might also help. 
+
+Note: During installation, I encountered a problem. After running `chsh -s /bin/zsh` and rebooting the system, `echo $SHELL` still gets `/bin/bash`. Several posts ([1](https://askubuntu.com/questions/195361/chsh-s-usr-bin-zsh-not-working), [2](https://askubuntu.com/questions/119253/ive-changed-default-shell-but-my-terminal-dont-get-it)) didn't help, and since everything else went well, I decided to ignore this issue for now. 
+
+The auto suggestion plugin mentioned in the lecture is `zsh-autosuggestions`. 
+#### Tree
+Displays the tree structure under current directory. 
+```
+tree
+```
+Note: `blue` means it's a directory, and `red` means it has execuation permission. 
+An alternative of it is `broot`, but I got an error when running `cargo install broot`, which might be related to this [issue]. 
+## Exercises
