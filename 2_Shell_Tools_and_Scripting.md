@@ -1,7 +1,7 @@
 ## Lecture 2: Shell Tools and Scripting
-Original note: [English Version](https://missing.csail.mit.edu/2020/course-shell/), [Chinese Version](https://missing-semester-cn.github.io/2020/shell-tools/)
+Original note: [English Version](https://missing.csail.mit.edu/2020/shell-tools/), [Chinese Version](https://missing-semester-cn.github.io/2020/shell-tools/)
 
-Course video: [YouTube (Official)](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J), [Bilibili](https://www.bilibili.com/video/BV1x7411H7wa?p=1)
+Course video: [YouTube (Official)](https://youtu.be/kgII-YWo3Zw), [Bilibili](https://www.bilibili.com/video/BV1x7411H7wa?p=2)
 ### Shell scripts
 #### Variables
 ```
@@ -131,4 +131,112 @@ convert image.{png,jpg}
 ```
 ```
 touch foo.{,1,2,10}
+touch lecture{1,2}/test{1,2,3}.py   # Cartesian product
+msdir foo bar
+touch {foo,bar}/{a..j}
+touch foo/x foo/y
+diff <(ls foo) <(ls bar)
+# 11,12d10
+# < x
+# < y
 ```
+#### Shebang
+An example in `python`:
+```
+#!/usr/local/bin/python
+import sys
+for arg in reversed(sys.argv[1:]):
+    print(arg)
+```
+To run it, 
+```
+./script.py a b c
+# c
+# b
+# a
+```
+Note: `#!/usr/local/bin/python` is the reason why the shell knows that this is a python script. Another way is to include `#!/usr/bin/env python`, which will use the `python` program found in `$PATH` to interpret the script. 
+#### Shellcheck
+```
+shellcheck mcd.sh
+# In mcd.sh line 1:
+# # foobar
+# ^-- SC2148: Tips depend on target shell and yours is unknown. Add a shebang.
+```
+### Shell tools
+#### Tldr
+Provides commonly used examples of commands. 
+```
+tldr tar
+```
+#### Find
+Recursively goes through all folders under the given directory and find files matching the pattern. 
+```
+find . -name foo -type d
+find . -path '**/test/**/*.py' -type f
+find . -mtime -1    # modify time
+find . -size +500k -size -10M -name '*.tar.gz'
+```
+It can also execute certain commands after finding all desired files. 
+```
+find . -name '*.tmp' -exec rm {} \;
+find . -name '*.png' -exec convert {} {.}.jpg \;
+```
+An alternative command for `find` is `fd`. [Here](https://github.com/sharkdp/fd) is the installation instruction. *(Do not use the provided `sudo apt install fdclone` in the shell to install `fd`, as it's a different library. )* `fd` use [regular expression](https://en.wikipedia.org/wiki/Regular_expression) instead of globbing to match patterns. A website I found very useful to test regex is [RegExr](https://regexr.com/), which not only highlights matched patterns but also includes explanation of every regex. 
+```
+fd ".*py" 
+```
+#### Locate
+Searches for files efficiently. 
+```
+locate tmp
+sudo updatedb
+```
+Note: it seems that `locate` can only find files within the linux file space. For more information, visit [locate and updatedb - Issue](https://github.com/Microsoft/WSL/issues/369). On Windows, [Everything](https://en.wikipedia.org/wiki/Everything_(software)) is a fairly handy software to search for files efficiently. 
+#### Grep
+Finds patterns within the file. 
+```
+grep foobar mcd.sh
+grep -R foobar .    # search in all files under the given directory
+```
+An alternative of `grep` is `ripgrep`, which can be installed via [instruction](https://github.com/BurntSushi/ripgrep#installation). It has nicely formatted results with more information. 
+```
+rg "for" -t py .
+# ./script.py
+# 3:for arg in reversed(sys.argv[1:]):
+rg "for" -t py -C 5 .   # -C gives context
+# ./script.py
+# 1-#!/usr/local/bin/python
+# 2-import sys
+# 3:for arg in reversed(sys.argv[1:]):
+# 4-        print(arg)
+rg -u --files-without-match "^#!" -t sh    # -u doesn't ignore hidden files
+```
+Unlike the example given in the lecture, either `rg -u --files-without-match "^#!" -t sh` or `rg -u --files-without-match ^#\! -t sh` works, while `rg -u --files-without-match "^#\!" -t sh` throws out an erroe saying `error: unrecognized escape sequence`. Recall in the last lecture that we have `echo "Hello world"` or `echo Hello\ world`, my guess is that we don't need escape sequence if it's quoted. I don't know, however, why it's working in the lecture. 
+```
+rg -u --files-without-match ^#\! -t sh --stats
+# mcd.sh
+# 
+# 1 matches
+# 1 matched lines
+# 1 files contained matches
+# 2 files searched
+# 0 bytes printed
+# 531 bytes searched
+# 0.000342 seconds spent searching
+# 0.007829 seconds
+```
+#### History
+Outputs command history. 
+```
+history | grep convert  # find all commands that have convert
+```
+`Ctrl` + `R` provides reversed history search. 
+#### Fzf
+Interactive search. Installtion documentation can be found [here](https://github.com/junegunn/fzf#using-git). 
+```
+cat example.sh | fzf
+```
+If default bindings is chosen during installation, then now `Ctrl` + `R` will have a similar nicely formatted search window. It also supports fuzzy search, which means you don't have to type in regex like `find`. 
+#### Zsh
+To set up `zsh` on WSL, I followed this [link](https://blog.joaograssi.com/windows-subsystem-for-linux-with-oh-my-zsh-conemu/), which is very clear on every step. 
