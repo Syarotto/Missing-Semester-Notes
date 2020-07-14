@@ -250,5 +250,5 @@ Displays the tree structure under current directory.
 tree
 ```
 Note: `blue` means it's a directory, and `red` means it has execuation permission. 
-An alternative of it is `broot`, but I got an error when running `cargo install broot`, which might be related to this [issue]. 
+An alternative of it is `broot`, but I got an error when running `cargo install broot`, which might be related to this [issue](https://github.com/rust-lang/rust/pull/68658). 
 ## Exercises
