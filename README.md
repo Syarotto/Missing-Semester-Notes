@@ -1,5 +1,5 @@
 # Missing-Semester-Notes
-Notes for the course: *Missing Semester IAP 2020* by MIT
+Notes and answers of the course: *Missing Semester IAP 2020* by MIT
 ## Course Information
 Course website: [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
 
