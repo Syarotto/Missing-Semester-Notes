@@ -35,7 +35,7 @@ pwd
 # /mnt/e
 ```
 Note: `.` means the current directory and `..` means the parent directory. 
-*To directly run a program from anywhere, either the shell could find where it is using PATH, or an absolute path is given. *
+*To directly run a program from anywhere, either the shell could find where it is using PATH, or an absolute path is given.*
 #### ls (list)
 Lists all files under the current directory. 
 ```
@@ -167,37 +167,41 @@ xdg-open sample3.txt
 *(`less` should also work. )*
 ## Exercises
 - Create a new directory called `missing` under `/tmp`.
+---
 ```
-# Answer
 mkdir /tmp/missing
 ```
+---
 - Look up the `touch` program. The `man` program is your friend.
+---
 ```
-# Answer
 man touch
 ```
+---
 - Use touch to create a new file called `semester` in `missing`. 
+---
 ```
-# Answer
 touch missing/semester
 ```
+---
 - Write the following into that file, one line at a time:
 ```
 #!/bin/sh
 curl --head --silent https://missing.csail.mit.edu
 ```
+________
 ```
-# Answer
 echo '#!/bin/sh' >> semester
 echo "curl --head --silent https://missing.csail.mit.edu" >> semester
 # or
 echo "\#\!/bin/sh" >> semester
 echo "curl --head --silent https://missing.csail.mit.edu" >> semester
 ```
-*Reference: what is [Bash history expansion](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#History-Interaction)
-and [how to get rid of it](https://stackoverflow.com/a/11816138)*
+*Reference: what is [Bash history expansion](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#History-Interaction) and [how to get rid of it](https://stackoverflow.com/a/11816138)*
+_______
 - Try to execute the file, i.e. type the path to the script (`./semester`) into your shell and press enter. 
 Understand why it doesn’t work by consulting the output of `ls` (hint: look at the permission bits of the file).
+_______
 ```
 ./semester
 # -bash: ./semester: Permission denied
@@ -206,10 +210,11 @@ ls -l
 # -rw-rw-rw- 1 syarotto syarotto 61 Jul 11 18:21 semester
 ```
 Note that we don't have the execute permission of the file. 
+_______
 - Run the command by explicitly starting the `sh` interpreter, and giving it the file `semester` as the first argument,
 i.e. `sh semester`. Why does this work, while `./semester` didn’t?
+---
  ```
- # Answer
  sh ./semester
  ```
 Because if running `sh`, we only need read access to the file. 
@@ -219,15 +224,17 @@ Because if running `sh`, we only need read access to the file.
 Extended notes: 
 1. [Difference between sh and bash](https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash)
 2. [Curl](https://www.geeksforgeeks.org/curl-command-in-linux-with-examples/)
+---
 - Look up the `chmod` program (e.g. use `man chmod`).
+---
 ```
-# Answer
 man chmod
 ```
+---
 - Use `chmod` to make it possible to run the command `./semester` rather than having to type `sh semester`. 
 How does your shell know that the file is supposed to be interpreted using `sh`? 
+_______
 ```
-# Answer
 chmod u=rwx,g=rwx,o=rwx semester
 ls -l
 # total 0
@@ -237,8 +244,10 @@ ls -l
 Because the first line in the file `#!/bin/sh` specified the interpreter program. 
 
 *Reference: [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))*
+_______
 - Use `|` and `>` to write the "last modified" date output by `semester` into a file called `last-modified.txt` in your home directory.
+---
 ```
-# Answer
 date -r semester > last-modified.txt | mv last-modified.txt ~/last-modified.txt
 ```
+---
