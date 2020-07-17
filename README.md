@@ -8,7 +8,7 @@ YouTube channel: [Missing Semester](https://www.youtube.com/channel/UCuXy5tCgEni
 | Date | Lecture                     | Note | Exercises |
 |:------:|:-----------------------------:|:------:|:-----------:|
 | 1/13 | [Course Overview + The Shell](https://github.com/Syarotto/Missing-Semester-Notes/blob/master/1_Overview_Shell.md#lecture-1-course-overview--the-shell) |:ok_hand:|:ok_hand:|
-| 1/14 |[Shell Tools and Scripting](https://github.com/Syarotto/Missing-Semester-Notes/blob/master/2_Shell_Tools_and_Scripting.md#lecture-2-shell-tools-and-scripting)|:ok_hand:|           |
+| 1/14 |[Shell Tools and Scripting](https://github.com/Syarotto/Missing-Semester-Notes/blob/master/2_Shell_Tools_and_Scripting.md#lecture-2-shell-tools-and-scripting)|:ok_hand:|:construction:|
 | 1/15 |Editors (Vim)|      |           |
 | 1/16 |Data Wrangling|      |           |
 | 1/21 |Command-line Environment|      |           |
