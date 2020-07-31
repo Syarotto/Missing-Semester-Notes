@@ -4,6 +4,8 @@ Notes and answers of the course: *Missing Semester IAP 2020* by MIT
 Course website: [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
 
 YouTube channel: [Missing Semester](https://www.youtube.com/channel/UCuXy5tCgEninup9cGplbiFw)
+
+Bilibili (not official): [计算机科学课堂中学不到的知识](https://www.bilibili.com/video/BV1x7411H7wa?)
 ## Progress
 | Date | Lecture                     | Note | Exercises |
 |:------:|:-----------------------------:|:------:|:-----------:|
